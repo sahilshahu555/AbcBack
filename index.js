@@ -45,7 +45,7 @@ app.post("/login",async(req,res)=>{
         bcrypt.compare(password,hashPass,(err,result)=>{
             if(result){
               let token= jwt.sign({ user_id: user._id},"Sahil")
-              res.status(200).send({msg:"Login Successful", token: token});
+              res.status(200).json(token);
             }else{
                 res.status(400).send({msg:"Login Failed"});
             }
